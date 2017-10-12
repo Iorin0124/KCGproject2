@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
     }
 
+
     /**
      * Register the Closure based commands for the application.
      *
