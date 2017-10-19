@@ -1,2 +1,11 @@
 『「ビギナーのためのLaravel入門」グループ 』
 http://libro.tuyano.com/index2?id=3766003
+
+Laravel 入門
+https://qiita.com/tsuuuuu_san/items/8107b276efc4e07c43d6
+
+Laravel5でバッチ開発
+http://blog.mekachan.net/?p=198
+
+artisanコマンドを利用してできること
+http://www.dn-web64.com/archives/web/artisan/
