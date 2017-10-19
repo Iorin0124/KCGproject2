@@ -1,0 +1,3 @@
+コマンドプロンプトにて、KCGProject2があるフォルダに移動。
+『php -S localhost:8000 -t public』と、入力するとLaravelが8000ポートを使用して動き出す。
+『http://localhost:8000/』に接続して確認
