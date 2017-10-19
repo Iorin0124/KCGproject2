@@ -1,3 +1,6 @@
+★　Laravel 5.0 リファレンス
+https://readouble.com/laravel/5.0/ja/releases.html
+
 『「ビギナーのためのLaravel入門」グループ 』
 http://libro.tuyano.com/index2?id=3766003
 
