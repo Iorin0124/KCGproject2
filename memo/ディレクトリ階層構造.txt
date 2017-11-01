@@ -1,0 +1,7 @@
+階層構造について
+
+rootファイル(Webページの遷移に関するファイル)
+roots → xeb.php
+
+見た目(HTML)ファイル系
+resources → views → 各ファイル
