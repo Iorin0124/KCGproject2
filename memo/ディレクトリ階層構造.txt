@@ -4,4 +4,4 @@ rootファイル(Webページの遷移に関するファイル)
 roots → xeb.php
 
 見た目(HTML)ファイル系
-strage → flamework → views → 各ファイル
+resources → views → 各ファイル
