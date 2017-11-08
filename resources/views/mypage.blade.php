@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h3>なかみー</h3>
-<p>いろいろ書いてね</p>
+  <h3>なかみー</h3>
+  <p>いろいろ書いてね</p>
 
 @endsection

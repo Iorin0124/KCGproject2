@@ -2,8 +2,19 @@
 
 @section('title','G\'star top')
 
+  <style>
+    .bgimg {
+      background-image: url(../img/gstand.png);
+
+    }
+  </style>
+
 @section('content')
-<img src="../img/gstand.png" alt="g stand" width="1000px;" height="500px;">
-<h3>なかみー</h3>
-<p>いろいろ書いてね</p>
+
+
+  <div class="bgimg">
+    <p >なんかいろいろ</p>
+  </div>
+    <h3>なかみー</h3>
+    <p>いろいろ書いてね</p>
 @endsection

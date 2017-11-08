@@ -12,3 +12,9 @@ http://blog.mekachan.net/?p=198
 
 artisanコマンドを利用してできること
 http://www.dn-web64.com/archives/web/artisan/
+
+スタイルシート系　marginとpadding
+http://hphtml.org/cont/16.html
+
+HTML　リファレンス
+http://www.tohoho-web.com/html/
