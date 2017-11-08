@@ -1,8 +1,9 @@
 @extends('lay-master')
 
-@section('title','とっぷぺーじ')
+@section('title','G\'star top')
 
 @section('content')
-<h1>なかみー</h1>
+<img src="../img/gstand.png" alt="g stand" width="1000px;" height="500px;">
+<h3>なかみー</h3>
 <p>いろいろ書いてね</p>
 @endsection
