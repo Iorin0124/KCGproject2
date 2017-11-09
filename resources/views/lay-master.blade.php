@@ -18,6 +18,9 @@
           vertical-align: middle;
           margin: 20px;
         }
+        .largeFont {
+          font-size: 24px;
+        }
         .middleFont {
           font-size: 20px;
         }
@@ -45,15 +48,15 @@
       <div class="headcol pad middleFont"><center>
         <a href="top" class="padr">トップページへ</a>
         <a href="top" class="padr">ダミーリンク</a>
-        <a href="top" class="padr">ダミーリンク</a>
         <a href="my" class="padr">マイページへ</a>
         <a href="new" class="padr">新規登録</a>
+        <a href="bonus" class="padr">おまけ</a>
       </center></div>
       <!--  ここまでがヘッダー  -->
 
 
       <!--  各ページ毎の中身(各々のphpファイルに記載)  -->
-      <h1>@yield('title')</h1>
+      <center><h1>@yield('title')</h1></center>
 
       @yield('content')
       <!--  ここまでが中身(各々のphpファイルに記載)  -->

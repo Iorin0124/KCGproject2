@@ -14,13 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-/*
-Route::get('toppo/', function () {
-    return view('top');
-});
-*/
+
 Route::get('top/', function () {
-    return view('topone');
+    return view('top');
 });
 
 Route::get('new/', function () {
@@ -29,4 +25,8 @@ Route::get('new/', function () {
 
 Route::get('my/', function () {
     return view('mypage');
+});
+
+Route::get('bonus/', function () {
+    return view('death');
 });
