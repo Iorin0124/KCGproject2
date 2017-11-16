@@ -5,37 +5,103 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
       <title>@yield('title')</title>
 
       <!-- Styles -->
         <!--  ここでレイアウト調整  -->
       <style>
-        .headcol {
+        .headcol{
           background-color: #E0E0F8;
         }
-        .footer {
+        .footer{
           font-size: 12px;
           vertical-align: middle;
           margin: 20px;
         }
-        .largeFont {
+        .largeFont{
           font-size: 24px;
         }
-        .middleFont {
+        .middleFont{
           font-size: 20px;
         }
-        .smallFont {
+        .smallFont{
           font-size: 14px;
         }
-        .padr {
+        .padr{
           padding-right: 50px;
         }
-        .pad {
+        .padl{
+          padding-left: 30px;
+        }
+        .padl-2{
+          padding-left: 62px;
+        }
+        .pad{
           padding: 10px
         }
-        .smallpad {
+        .smallpad{
           padding: 6px;
         }
+        .linedotted{
+          padding: 5px;
+          border-bottom: 4px dotted #E0E0F8;
+        }
+        strong{
+          color: Navy;
+        }
+        .puldown-1{
+          text-align: center;
+          width: 120px;
+          height: 40px;
+          border: solid 2px Dimgray;
+          border-radius: 8px/8px;
+        }
+        .puldown-2{
+          text-align: center;
+          width: 160px;
+          height: 40px;
+          border: solid 2px Dimgray;
+          border-radius: 8px/8px;
+        }
+        .tablespace{
+          width: 1400px;
+          text-align: center;
+          border: solid 2px Dimgray;
+          border-radius: 4px/4px;
+          cellspacing: 4px;
+        }
+        th{
+          padding: 2px;
+          width: 20%;
+          border-right: solid Dimgray 2px;
+          border-bottom: solid Dimgray 2px;
+          background-color: PaleTurquoise;
+        }
+        td{
+          padding: 1px;
+          width: 20%;
+          border-right: solid Dimgray 2px;
+          background-color: AliceBlue;
+        }
+
+        .btnicon-Search:before{
+          display: inline-block;
+			    font-family: "FontAwesome";
+			    font-size: 26px;
+          margin: 2px;
+          content: '\f002';
+        }
+        .btnicon-MousePoint:before{
+          display: inline-block;
+          font-family: "FontAwesome";
+          font-size: 20px;
+          margin: 3px;
+          content: '\f245';
+        }
+
+
       </style>
         <!--  ここまでがスタイル調整  -->
     </head>
