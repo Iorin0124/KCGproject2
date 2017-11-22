@@ -1,0 +1,5 @@
+・controllerからviewへのデータ送信はreturn view('view名','変数名');
+・変数名はcontrollerとviewで揃える
+・viewからcontrollerへのデータ送信はweb.phpに
+「Route::post(get)('view名/',['uses'=>'controller@メソッド','as'=>'controller/']);」
+・formから送信する際、actionはasと同じにする

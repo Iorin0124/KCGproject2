@@ -30,3 +30,9 @@ Route::get('my/', function () {
 Route::get('bonus/', function () {
     return view('death');
 });
+
+Route::get('test/', 'TestController@test');
+
+Route::post('test/',[
+	'uses'=>'TestController@getNumber',
+	'as'=>'test/']);
