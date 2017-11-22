@@ -66,7 +66,7 @@
           border-radius: 8px/8px;
         }
         .tablespace{
-          width: 1400px;
+          width: 1200px;
           text-align: center;
           border: solid 2px Dimgray;
           border-radius: 4px/4px;
