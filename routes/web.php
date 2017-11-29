@@ -31,6 +31,10 @@ Route::get('bonus/', function () {
     return view('death');
 });
 
+Route::post('top/', [
+	'uses'=>'topController@search',
+	'as'=>'top/']);
+
 Route::get('test/', 'TestController@test');
 
 Route::post('test/',[
