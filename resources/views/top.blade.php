@@ -38,18 +38,40 @@
 <script type="text/javascript">
   $("#todohuken").change(function(){
     var todonum = $(this).val();
+    //var count = Number(1);
+    //console.log(count);
     //console.log(todonum);   //どの都道府県が選択されているか番号で取得、確認
     $("#status").empty();
-    if(todonum == "1"){   //北海道
-      @foreach(config("ic_hokkaido") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
-    }else if(todonum == "2"){   //青森県
-      @foreach(config("ic_aomori") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
+    // if(todonum == "1"){   //北海道
+    //   @foreach(config("ic_hokkaido") as $index => $name)
+    //     $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
+    //   @endforeach
+    // }else if(todonum == "2"){   //青森県
+    //   @foreach(config("ic_aomori") as $index => $name)
+    //     $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
+    //   @endforeach
+    // }
+    var array =[]
+    @foreach(config("prefUrl") as $index => $name)
+      array.push("ic_" + "{{$name}}");
+    @endforeach
+    console.log(array[5]);
+
+    for(var i=1; i<48 i++){
+        if(todonum == i){   //北海道
+          @foreach(config("array[i+1]") as $index => $name)
+            $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
+          @endforeach
+        }
     }
-  });
+    // foreach(config("prefUrl") as $index => $name)
+    //       if(todonum == {{$index}}){
+    //            foreach(config("ic_" + "{{$name}}") as $index => $name)
+    //         $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
+    //             endforeach
+    //       }
+    //       endforeach
+   });
 </script>
 
 
