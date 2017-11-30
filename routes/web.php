@@ -36,3 +36,7 @@ Route::get('test/', 'TestController@test');
 Route::post('test/',[
 	'uses'=>'TestController@getNumber',
 	'as'=>'test/']);
+	
+Route::post('top/',[
+	'uses'=>'topController@search',
+	'as'=>'top/']);
