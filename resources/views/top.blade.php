@@ -1,44 +1,83 @@
 @extends('lay-master')
 
-@section('title','VaAp Top')
+@section('title','拘束案内 Top')
 
 @section('content')
 <!--　決まり文句　-->
 
 
 <!--　検索に必要な条件の設定フォーム　-->
-    <p class="btnicon-Search largeFont padl">出発IC、到着ICを設定する</p>
+  <p class="btnicon-Search largeFont padl">ICからルート検索</p>
+  <!--　出発　都道府県選択　※idをstartPrefに変えたい　-->
   <div>
-    <!--　都道府県選択　-->
-   <form class="padl-2" action="{{route('top/')}}" method="POST">
-	  {{csrf_field()}}
+  <form class="padl-2" action="{{route('top/')}}" method="POST">
+    {{csrf_field()}}
+    <p class="inline middleFont"><strong>出発地</strong></p>
       <select class="middleFont puldown-1" name="startP" id="todohuken">
-        @foreach(config("todohuken") as $index => $name)
-          <option name="todo" value="{{$index}}">{{$name}}</option>
+        @foreach(config("pref") as $index => $name)
+          <option name="pref" value="{{$index}}">{{$name}}</option>
         @endforeach
       </select>
-      <i class="padl-2" />
+      <i class="smallpad"></i>
 
-      <!--　放送ステータス　-->
-      <select class="middleFont puldown-2" name="inIC" id="status">
-        @foreach(config('ic') as $index => $i)
-			@foreach($i as $name => $n)
-			@if($index==1)
-				<option value="{{$name}}">{{$n}}</option>
-			@endif
-			@endforeach
-		@endforeach
+  <!--　出発　IC名選択　※idをstartIcに変えたい　-->
+  <select class="middleFont puldown-2" name="inIC" id="status">
+    @foreach(config('ic') as $index => $i)
+      @foreach($i as $name => $n)
+        @if($index==1)
+          <option value="{{$name}}">{{$n}}</option>
+        @endif
+      @endforeach
+    @endforeach
+  </select>
+  <i class="smallpad btnicon-ArrowRight"></i>
+
+  <!--　到着　都道府県選択　※まだPOSTが機能してない　-->
+<!--  <form class="" action="{{route('top/')}}" method="POST">  -->
+    {{csrf_field()}}
+    <p class="inline middleFont"><strong>到着地</strong></p>
+      <select class="middleFont puldown-1" name="endP" id="endPref">
+        @foreach(config("pref") as $index => $name)
+          <option name="pref" value="{{$index}}">{{$name}}</option>
+        @endforeach
       </select>
-      <i class="padl-2" />
-      <!--　ソート条件　-->
-      <select class="middleFont puldown-2" name="ソート順" id="sort">
-        <option value="0">今日の放送</option><option value="1">放送曜日順</option><option value="2">五十音順</option>
-      </select>
-      <i class="padl-2" />
-      <!--　送信ボタンonclickイベントは設定してね　-->
-      <button type="submit" class="btnicon-MousePoint middleFont puldown-1" name="button">検索</button>
-    </form>
-  </div>
+      <i class="smallpad"></i>
+
+  <!--　到着　IC名選択　※まだPOSTが機能してない　-->
+  <select class="middleFont puldown-2" name="endIC" id="endIc">
+    @foreach(config('ic') as $index => $i)
+      @foreach($i as $name => $n)
+        @if($index==1)
+          <option value="{{$name}}">{{$n}}</option>
+        @endif
+      @endforeach
+    @endforeach
+  </select>
+  <i class="smallpad"></i>
+</div>
+
+
+  <!--　車種　-->
+  <div class="padt padl-2">
+    <p class="inline middleFont"><strong>車種選択</strong></p>
+    <select class="middleFont puldown-1" name="carM" id="carModel">
+      <option value="0">普通車</option><option value="1">軽自動車</option><option value="2">中型車</option>
+      <option value="3">大型車</option><option value="4">特大車</option>
+    </select>
+    <i class="pad"></i>
+
+  <!--　ソート順　-->
+  <p class="inline middleFont"><strong>ソート順</strong></p>
+  <select class="middleFont puldown-1" name="sort" id="sortBy">
+    <option value="0">距離</option><option value="1">料金</option>
+  </select>
+
+  <!--　送信ボタン　onclickイベントは設定してね　-->
+  <i style="padding-left:463px" ></i>
+  <button type="submit" class="btnicon-MousePoint middleFont puldown-1" name="button">検索</button>
+  </form>
+</div>
+
 <!--　フォーム終了　-->
 
 <!--　どの都道府県が選択されるかにより選択できるICを変える　-->
@@ -55,16 +94,7 @@
 				}
 			@endforeach
 		@endforeach
-/*	   if(todonum == "1"){   //北海道
-      @foreach(config("ic_hokkaido") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
-    }else if(todonum == "2"){   //青森県
-      @foreach(config("ic_aomori") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
-    }
-*/
+
 
   });
 </script>

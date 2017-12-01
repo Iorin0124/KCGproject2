@@ -16,6 +16,9 @@
         .headcol{
           background-color: #E0E0F8;
         }
+        .inline{
+          display: inline;
+        }
         .footer{
           font-size: 12px;
           vertical-align: middle;
@@ -25,7 +28,7 @@
           font-size: 24px;
         }
         .middleFont{
-          font-size: 20px;
+          font-size: 18px;
         }
         .smallFont{
           font-size: 14px;
@@ -38,6 +41,9 @@
         }
         .padl-2{
           padding-left: 62px;
+        }
+        .padt{
+          padding-top: 10px;
         }
         .pad{
           padding: 10px
@@ -54,14 +60,14 @@
         }
         .puldown-1{
           text-align: center;
-          width: 120px;
+          width: 110px;
           height: 40px;
           border: solid 2px Dimgray;
           border-radius: 8px/8px;
         }
         .puldown-2{
           text-align: center;
-          width: 160px;
+          width: 280px;
           height: 40px;
           border: solid 2px Dimgray;
           border-radius: 8px/8px;
@@ -101,6 +107,14 @@
           margin: 3px;
           content: '\f245';
         }
+        .btnicon-ArrowRight:before{
+          display: inline-block;
+          font-family: "FontAwesome";
+          font-size: 20px;
+          margin: 3px;
+          content: '\f061';
+        }
+
 
 
       </style>
