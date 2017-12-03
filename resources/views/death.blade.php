@@ -4,15 +4,15 @@
 
 
 @section('content')
-  <div><center>
+  <h1 class="padl-2"><strong>没作品の墓場</strong></h1>
+  <div class="padl-2">
     <p class="middleFont">↓トップページに戻るリンク用の画像アイコン、企画破綻で没。</p>
-    <p class="middleFont">作画:西田 絢　　編集:山本 桜子</p>
+    <!-- <p class="middleFont">作画:西田 絢　　編集:山本 桜子</p> -->
     <img src="../img/topIcon01.png" alt="topicon"  height="80px;" width="290px;">
-    <br><br><br><br><br>
-    <p class="middleFont">↓トップページ掲載用のガソリンスタンド画像、企画破綻で没。</p>
-    <p class="middleFont">作画:西田 絢　　編集:山本 桜子</p>
-    <img src="../img/gstand.png" alt="gstarnd" width="1000px">
+    <p class="padt middleFont">↓トップページ掲載用のガソリンスタンド画像、企画破綻で没。</p>
+    <!-- <p class="middleFont">作画:西田 絢　　編集:山本 桜子</p> -->
+    <img src="../img/gstand.png" alt="gstarnd" width="900px">
     <br><br><br>
-  </center></div>
+  </div>
 
 @endsection

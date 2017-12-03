@@ -31,12 +31,20 @@ Route::get('bonus/', function () {
     return view('death');
 });
 
+Route::get('sitepolicy/', function () {
+    return view('sitepolicy');
+});
+
+Route::get('caution/', function () {
+    return view('caution');
+});
+
 Route::get('test/', 'TestController@test');
 
 Route::post('test/',[
 	'uses'=>'TestController@getNumber',
 	'as'=>'test/']);
-	
+
 Route::post('top/',[
 	'uses'=>'topController@search',
 	'as'=>'top/']);

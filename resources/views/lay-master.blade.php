@@ -120,14 +120,12 @@
       </style>
         <!--  ここまでがスタイル調整  -->
     </head>
-
-
     <!-- ここに中身を書いていく(HTML) -->
     <body>
       <!-- 共通のヘッダー -->
       <p class="headcol"><a href="top"><img src="../img/topIcon01.png" alt="top icon" height="80px;" width="290px;"></a></p>
       <div class="headcol pad middleFont"><center>
-        <a href="top" class="padr">トップページへ</a>
+        <a href="top" class="padr">ICから検索</a>
         <a href="top" class="padr">ダミーリンク</a>
         <a href="my" class="padr">マイページへ</a>
         <a href="new" class="padr">新規登録</a>
@@ -137,7 +135,7 @@
 
 
       <!--  各ページ毎の中身(各々のphpファイルに記載)  -->
-      <center><h1>@yield('title')</h1></center>
+      <!-- <center><h1>@yield('title')</h1></center> -->
 
       @yield('content')
       <!--  ここまでが中身(各々のphpファイルに記載)  -->
@@ -148,8 +146,8 @@
       <center>
         <div class="smallFont headcol smallpad">
           <a href="top" class="padr">プライバシーポリシー</a>
-          <a href="top" class="padr">サイトポリシー</a>
-          <a href="top" class="padr">ご利用上の注意</a>
+          <a href="sitepolicy" class="padr">サイトポリシー</a>
+          <a href="caution" class="padr">ご利用上の注意</a>
           <a href="top" class="padr">よくあるご質問</a>
           <a href="top" class="padr">お問い合わせ</a>
         </div>
