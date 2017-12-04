@@ -7,6 +7,8 @@
 
 
 <!--　検索に必要な条件の設定フォーム　-->
+<!-- 出発都道府県のnameをstartP、出発ICのnameをinIC、ソートのnameをsortに変更 -->
+<!-- 目的地の都道府県のnameをgoalP、到着ICのnameをoutIC、車種のnameをcarでHTMLを書いてください(Controllerからそれらの名前で参照)) -->
     <p class="btnicon-Search largeFont padl">出発IC、到着ICを設定する</p>
   <div>
     <!--　都道府県選択　-->
@@ -45,7 +47,6 @@
 <script type="text/javascript">
   $("#todohuken").change(function(){
     var todonum = $(this).val();
-    //console.log(todonum);   //どの都道府県が選択されているか番号で取得、確認
 	$("#status").empty();
 	    @foreach(config('ic') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -55,23 +56,12 @@
 				}
 			@endforeach
 		@endforeach
-/*	   if(todonum == "1"){   //北海道
-      @foreach(config("ic_hokkaido") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
-    }else if(todonum == "2"){   //青森県
-      @foreach(config("ic_aomori") as $index => $name)
-        $("#status").append($("<option>").val("{{$index}}").text("{{$name}}"));
-      @endforeach
-    }
-*/
-
   });
 </script>
 
 
 
-<!--　div内に検索した番組情報を表示する　フェッチに書き換えてくれてok　-->
+<!--　内容はとりあえず必要そうなものを入れておいただけなのであとから変更可　-->
 @if(!empty($inIC))
   <div class="padl-2">
     <table class="tablespace middleFont">

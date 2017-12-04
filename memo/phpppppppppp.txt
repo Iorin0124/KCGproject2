@@ -3,3 +3,5 @@
 ・viewからcontrollerへのデータ送信はweb.phpに
 「Route::post(get)('view名/',['uses'=>'controller@メソッド','as'=>'controller/']);」
 ・formから送信する際、actionはasと同じにする
+・config('ファイル名.キー')で指定した要素がとってこれる
+・多次元連想配列の場合は二重foreach
