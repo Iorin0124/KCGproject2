@@ -45,6 +45,9 @@
         .padt{
           padding-top: 10px;
         }
+        .padt-2{
+          padding-top: 20px;
+        }
         .pad{
           padding: 10px
         }
@@ -76,8 +79,8 @@
           width: 1200px;
           text-align: center;
           border: solid 2px Dimgray;
-          border-radius: 4px/4px;
-          cellspacing: 4px;
+          border-collapse: collapse;
+
         }
         th{
           padding: 2px;

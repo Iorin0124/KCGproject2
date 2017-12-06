@@ -100,7 +100,7 @@
 
 <!--　div内に検索した番組情報を表示する　フェッチに書き換えてくれてok　-->
 @if(!empty($inIC))
-  <div class="padl-2">
+  <div class="padt-2 padl-2">
     <table class="tablespace middleFont">
       <thead>
       <tr>
@@ -110,7 +110,10 @@
 		<tbody>
 		  <tr>
 			<td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
-		  </tr>
+      </tr>
+      <tr>
+      <td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
+      </tr>
 		</tbody>
     </table>
   </div>
