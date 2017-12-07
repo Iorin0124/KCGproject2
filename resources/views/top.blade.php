@@ -77,30 +77,15 @@
 </div>
 <!--　フォーム終了　-->
 
-<!--　どの都道府県が選択されるかにより選択できるICを変える　-->
-<script type="text/javascript">
-  $("#startPref").change(function(){
-    var prefnum = $(this).val();
-    //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
-	$("#inIc").empty();
-	    @foreach(config('ic') as $index => $i)
-		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-			@foreach($i as $name => $n)
-				if(prefnum==index){
-					$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
-				}
-			@endforeach
-		@endforeach
-
-
-  });
-</script>
-
-
+<!--　天気のプラグイン　-->
+<div class="padl-2 padt-2">
+  <div id="mamewaza_weather" style="" class="mamewaza_weather divspace"></div>
+</div>
+<!--　天気のプラグイン終了　-->
 
 <!--　div内に検索した番組情報を表示する　フェッチに書き換えてくれてok　-->
 @if(!empty($inIC))
-  <div class="padt-2 padl-2">
+  <div class="padt padl-2">
     <table class="tablespace middleFont">
       <thead>
       <tr>
@@ -118,6 +103,36 @@
     </table>
   </div>
 <!--　div終了　-->
+
+<!--　どの都道府県が選択されるかにより選択できるICを変える　-->
+<script type="text/javascript">
+  $("#startPref").change(function(){
+    var prefnum = $(this).val();
+    //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
+	$("#inIc").empty();
+	    @foreach(config('ic') as $index => $i)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(prefnum==index){
+					$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
+				}
+			@endforeach
+		@endforeach
+  });
+</script>
+
+<!--　天気を表示させるプラグインを導入　-->
+<script type="text/javascript">
+  $.mamewaza_weather( {
+    selector: "#mamewaza_weather",
+	  region:"012010",
+	  layout:"horizontalMini",
+	  when:"7days",
+	  explanation:"1"
+  } );
+</script>
+
+
 @endif
 
   <i class="pad"></i>

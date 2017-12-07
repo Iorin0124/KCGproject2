@@ -5,6 +5,8 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <script type="text/javascript" src="jquery-2.1.3.js"></script>
+      <script type="text/javascript" src="mamewaza_weather/mamewaza_weather.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="mamewaza_weather/mamewaza_weather.css" />
 
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -75,24 +77,24 @@
           border: solid 2px Dimgray;
           border-radius: 8px/8px;
         }
+        .divspace{
+          width: 1200px;
+        }
         .tablespace{
           width: 1200px;
           text-align: center;
           border: solid 2px Dimgray;
           border-collapse: collapse;
-
         }
         th{
           padding: 2px;
           width: 20%;
-          border-right: solid Dimgray 2px;
           border-bottom: solid Dimgray 2px;
           background-color: PaleTurquoise;
         }
         td{
           padding: 1px;
-          width: 20%;
-          border-right: solid Dimgray 2px;
+
           background-color: AliceBlue;
         }
 
