@@ -136,16 +136,14 @@
       </tr>
       </thead>
 		<tbody>
+		@for($i=0 ; $i<count($item) ; $i++)
 		  <tr>
-			<td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
-      </tr>
-      <tr>
-      <td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
-      </tr>
+			<td>{{$item[$i]}}</td><td>{{$dis}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
+		</tr>
+		@endfor
 		</tbody>
     </table>
   </div>
- {{$item}}
 <!--　div終了　-->
 @endif
 

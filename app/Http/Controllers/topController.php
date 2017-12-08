@@ -35,17 +35,19 @@ class topController extends Controller
 				}
 			}
 		}	
-
+	
 		$xml = 'http://kosoku.jp/api/route.php?f='.$inIC.'&t='.$outIC.'&c='.$cars[$car].'&sortBy='.$choice[$sort];
-		$url = simplexml_load_file($xml);
-		$item = [];
-		//多重階層のところエラー出てる
-		foreach($url->children() as $name => $value){
-			$item[$name] = $value;
-			echo $item[$name];
+		$url = simplexml_load_file($xml) or die("XMLパースエラー");
+		//各パラメータの取得は分かったので、表に記すものを考える。
+		
+		//距離
+		$dis = (string)$url->Routes->Route->Summary->TotalLength;
+		//各料金の取得
+		foreach($url->Routes->Route->Details->Section->Tolls->Toll as $value){
+			$item[] = (string)$value;
 		}
-//		$item = json_decode( json_decode($obj), true);
-
-		return view('top',compact('startP','inIC','goalP','outIC','car','sort','item'));
+		$num = count($item);
+		
+		return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','num','dis'));
 	}
 }
