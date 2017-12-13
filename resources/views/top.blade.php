@@ -36,6 +36,9 @@
     @endforeach
   </select>
   <i class="smallpad btnicon-ArrowRight"></i>
+  <i class="btnicon-ArrowRight"></i>
+  <i class="smallpad btnicon-ArrowRight"></i>
+
 
   <!--　到着　都道府県選択　-->
     <p class="inline middleFont"><strong>到着地</strong></p>
@@ -58,9 +61,12 @@
       @endforeach
     @endforeach
   </select>
-  <i class="smallpad"></i>
-</div>
+  <i class="smallpad" style="padding-left:12px"></i>
 
+<!--　出発地と目的地の入れ替えボタン　onclickイベントは設定してね　-->
+<button type="submit" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton">入替</button>
+</form>
+</div>
 
   <!--　車種　-->
   <div class="padt padl-2">
@@ -82,12 +88,13 @@
   </select>
 
   <!--　送信ボタン　onclickイベントは設定してね　-->
-  <i style="padding-left:463px" ></i>
+  <i style="padding-left:677px" ></i>
   <button type="submit" class="btnicon-MousePoint middleFont puldown-1" name="button">検索</button>
   </form>
 </div>
 <!--　フォーム終了　-->
 
+<<<<<<< HEAD
 <!--　どの都道府県が選択されるかにより選択できるICを変える　-->
 <script type="text/javascript">
 
@@ -106,7 +113,7 @@
 
 
   });
-  
+
     $("#goalPref").change(function(){
     var prefnum = $(this).val();
     //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
@@ -125,15 +132,36 @@
 </script>
 
 
+=======
+<!--　天気のプラグイン　-->
+<div class="padl-2 padt-2">
+  <div id="mamewaza_weather" style="" class="mamewaza_weather divspace"></div>
+</div>
+<!--　天気のプラグイン終了　-->
+>>>>>>> io/14
 
 <!--　div内に検索した番組情報を表示する　フェッチに書き換えてくれてok　-->
 @if(!empty($inIC))
-  <div class="padt-2 padl-2">
+  <div class="padt padl-2">
     <table class="tablespace middleFont">
       <thead>
       <tr>
         <th>料金</th><th>距離</th><th>時間</th><th>パラメータ</th><th>書いてね</th>
       </tr>
+      </thead>
+        <tbody>
+          <tr>
+            <td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
+          </tr>
+          <tr>
+            <td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+<!--　div終了　-->
+@endif
+</tr>
       </thead>
 		<tbody>
 		@for($i=0 ; $i<count($item) ; $i++)
@@ -145,6 +173,36 @@
     </table>
   </div>
 <!--　div終了　-->
+
+<!--　どの都道府県が選択されるかにより選択できるICを変える　-->
+<script type="text/javascript">
+  $("#startPref").change(function(){
+    var prefnum = $(this).val();
+    //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
+	$("#inIc").empty();
+	    @foreach(config('ic') as $index => $i)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(prefnum==index){
+					$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
+				}
+			@endforeach
+		@endforeach
+  });
+</script>
+
+<!--　天気を表示させるプラグインを導入　-->
+<script type="text/javascript">
+  $.mamewaza_weather( {
+    selector: "#mamewaza_weather",
+	  region:"012010",
+	  layout:"horizontalMini",
+	  when:"7days",
+	  explanation:"1"
+  } );
+</script>
+
+
 @endif
 
   <i class="pad"></i>
