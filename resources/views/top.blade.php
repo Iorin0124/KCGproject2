@@ -31,6 +31,9 @@
     @endforeach
   </select>
   <i class="smallpad btnicon-ArrowRight"></i>
+  <i class="btnicon-ArrowRight"></i>
+  <i class="smallpad btnicon-ArrowRight"></i>
+
 
   <!--　到着　都道府県選択　-->
     <p class="inline middleFont"><strong>到着地</strong></p>
@@ -51,9 +54,12 @@
       @endforeach
     @endforeach
   </select>
-  <i class="smallpad"></i>
-</div>
+  <i class="smallpad" style="padding-left:12px"></i>
 
+<!--　出発地と目的地の入れ替えボタン　onclickイベントは設定してね　-->
+<button type="submit" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton">入替</button>
+</form>
+</div>
 
   <!--　車種　-->
   <div class="padt padl-2">
@@ -71,7 +77,7 @@
   </select>
 
   <!--　送信ボタン　onclickイベントは設定してね　-->
-  <i style="padding-left:463px" ></i>
+  <i style="padding-left:677px" ></i>
   <button type="submit" class="btnicon-MousePoint middleFont puldown-1" name="button">検索</button>
   </form>
 </div>

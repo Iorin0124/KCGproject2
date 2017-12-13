@@ -115,9 +115,16 @@
         .btnicon-ArrowRight:before{
           display: inline-block;
           font-family: "FontAwesome";
-          font-size: 20px;
+          font-size: 24px;
           margin: 3px;
           content: '\f061';
+        }
+        .btnicon-Refresh:before{
+          display: inline-block;
+          font-family: "FontAwesome";
+          font-size: 20px;
+          margin: 3px;
+          content: '\f021';
         }
 
 
