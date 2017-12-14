@@ -35,19 +35,31 @@ class topController extends Controller
 				}
 			}
 		}	
-	
-		$xml = 'http://kosoku.jp/api/route.php?f='.$inIC.'&t='.$outIC.'&c='.$cars[$car].'&sortBy='.$choice[$sort];
-		$url = simplexml_load_file($xml) or die("XMLパースエラー");
-		//各パラメータの取得は分かったので、表に記すものを考える。
 		
-		//距離
-		$dis = (string)$url->Routes->Route->Summary->TotalLength;
-		//各料金の取得
-		foreach($url->Routes->Route->Details->Section->Tolls->Toll as $value){
-			$item[] = (string)$value;
+		if($inIC == $outIC){
+			$alert = "出発ICと到着ICに同一のものが選択されています。";
+
+			return view('top',compact('alert'));		
+		}else{
+			$xml = 'http://kosoku.jp/api/route.php?f='.$inIC.'&t='.$outIC.'&c='.$cars[$car].'&sortBy='.$choice[$sort];
+			$url = simplexml_load_file($xml) or die("XMLパースエラー");
+			//各パラメータの取得は分かったので、表に記すものを考える。
+			$rote = (string)$url->Status;
+
+			if($rote == 'End'){
+				//距離
+				$dis = (string)$url->Routes->Route->Summary->TotalLength;
+				//各料金の取得
+				foreach($url->Routes->Route->Details->Section->Tolls->Toll as $value){
+					$item[] = (string)$value;
+				}
+
+				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis'));
+			}else{
+				$alert = "ルートが見つかりませんでした。";
+							
+				return view('top',compact('alert'));
+			}
 		}
-		$num = count($item);
-		
-		return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','num','dis'));
 	}
 }

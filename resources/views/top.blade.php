@@ -17,9 +17,6 @@
         @foreach(config("pref") as $index => $name)
           <option name="pref" value="{{$index}}" <?php if(!empty($startP)&&$startP==$index){print 'selected';}; ?>>{{$name}}</option>
         @endforeach
-		@if(!empty($inIC))
-
-		@endif
       </select>
       <i class="smallpad"></i>
 
@@ -64,8 +61,7 @@
   <i class="smallpad" style="padding-left:12px"></i>
 
 <!--　出発地と目的地の入れ替えボタン　onclickイベントは設定してね　-->
-<button type="submit" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton">入替</button>
-</form>
+<button type="button" onclick="change();" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton">入替</button>
 </div>
 
   <!--　車種　-->
@@ -100,26 +96,13 @@
 </div>
 <!--　天気のプラグイン終了　-->
 
-<!--　div内に検索した番組情報を表示する　フェッチに書き換えてくれてok　-->
-@if(!empty($inIC))
-  <div class="padt-2 padl-2">
-    <table class="tablespace middleFont">
-      <thead>
-      <tr>
-        <th>料金</th><th>距離</th><th>時間</th><th>パラメータ</th><th>書いてね</th>
-      </tr>
-      </thead>
-		<tbody>
-		@for($i=0 ; $i<count($item) ; $i++)
-		  <tr>
-			<td>{{$item[$i]}}</td><td>{{$dis}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td><td>{{$inIC}}</td>
-		</tr>
-		@endfor
-		</tbody>
-    </table>
-  </div>
-  @endif
-<!--　div終了　-->
+<!-- 同一ICが選択されていた場合、alertを出す -->
+@if(!empty($alert))
+	<script>
+		var str = <?php echo json_encode($alert, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+		alert(str);
+	</script>
+@endif
 
 <!--　どの都道府県が選択されるかにより選択できるICを変える　-->
 <script type="text/javascript">
@@ -149,6 +132,65 @@
       @endforeach
     @endforeach
   });
+  
+  function change(){
+	var inPref = $("#startPref").val();
+	var outPref = $("#goalPref").val();
+	var inIC = $("#inIc").val();
+	var outIC = $("#outIc").val();
+
+	$("#inIc").empty();
+	$("#outIc").empty();
+	
+	$("#startPref").empty();
+	@foreach(config('pref') as $index => $name)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+		if(outPref != index){
+			$("#startPref").append($("<option>").val("{{$index}}").text("{{$name}}"));
+		}else{
+			$("#startPref").append($("<option selected>").val("{{$index}}").text("{{$name}}"));
+
+		}
+    @endforeach
+	
+	$("#goalPref").empty();
+	@foreach(config('pref') as $index => $name)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+		if(inPref != index){
+			$("#goalPref").append($("<option>").val("{{$index}}").text("{{$name}}"));
+		}else{
+			$("#goalPref").append($("<option selected>").val("{{$index}}").text("{{$name}}"));
+
+		}
+    @endforeach
+
+
+	  @foreach(config('ic') as $index => $i)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(outPref==index){
+					if(outIC == <?php echo json_encode($name, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>){
+						$("#inIc").append($("<option selected>").val("{{$name}}").text("{{$n}}"));
+					}else{
+						$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
+					}	
+				}
+			@endforeach
+		@endforeach
+		
+	  @foreach(config('ic') as $index => $i)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(inPref==index){
+					if(inIC == <?php echo json_encode($name, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>){
+						$("#outIc").append($("<option selected>").val("{{$name}}").text("{{$n}}"));
+					}else{
+						$("#outIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
+					}	
+				}
+			@endforeach
+		@endforeach
+  }
 </script>
 
 
@@ -163,7 +205,26 @@
   } );
 </script>
 
-
+<!--　div内に検索した情報を表示する　フェッチに書き換えてくれてok　-->
+@if(!empty($inIC))
+  <div class="padt-2 padl-2">
+    <table class="tablespace middleFont">
+      <thead>
+      <tr>
+        <th>料金</th><th>距離</th><th>時間</th><th>パラメータ</th><th>書いてね</th>
+      </tr>
+      </thead>
+		<tbody>
+		@for($i=0 ; $i<count($item) ; $i++)
+		  <tr>
+			<td>{{$item[$i]}}</td><td>{{$dis}}</td><td>{{$inIC}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
+		</tr>
+		@endfor
+		</tbody>
+    </table>
+  </div>
+  @endif
+<!--　div終了　-->
 
   <i class="pad"></i>
 @endsection
