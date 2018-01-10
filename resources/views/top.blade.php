@@ -69,7 +69,7 @@
     <p class="inline middleFont"><strong>車種選択</strong></p>
     <select class="middleFont puldown-1" name="car" id="carModel">
       <option value="0" <?php if(!empty($car)&&$car==0){print 'selected';}; ?>>普通車</option>
-	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車</option>
+	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車等</option>
 	  <option value="2" <?php if(!empty($car)&&$car==2){print 'selected';}; ?>>中型車</option>
       <option value="3" <?php if(!empty($car)&&$car==3){print 'selected';}; ?>>大型車</option>
 	  <option value="4" <?php if(!empty($car)&&$car==4){print 'selected';}; ?>>特大車</option>
@@ -195,16 +195,19 @@
 
 
 <!--　天気を表示させるプラグインを導入　-->
-<script type="text/javascript">
-  $.mamewaza_weather( {
-    selector: "#mamewaza_weather",
-	  region:"012010",
-	  layout:"horizontalMini",
-	  when:"7days",
-	  explanation:"1"
-  } );
-</script>
-
+@if(!empty($weather))
+	<script type="text/javascript">
+		var weather = <?php echo json_encode($weather, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+	  $.mamewaza_weather( {
+		selector: "#mamewaza_weather",
+		  region: weather,
+		  layout:"horizontalMini",
+		  when:"7days",
+		  explanation:"1"
+	  } );
+	 </script>
+@endif
+	 
 <!--　div内に検索した情報を表示する　フェッチに書き換えてくれてok　-->
 @if(!empty($inIC))
   <div class="padt-2 padl-2">
