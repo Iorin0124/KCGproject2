@@ -1,6 +1,6 @@
 @extends('lay-master')
 
-@section('title','拘束案内 Top')
+@section('title','高速案内 Top')
 
 @section('content')
 <!--　決まり文句　-->
@@ -69,7 +69,7 @@
     <p class="inline middleFont"><strong>車種選択</strong></p>
     <select class="middleFont puldown-1" name="car" id="carModel">
       <option value="0" <?php if(!empty($car)&&$car==0){print 'selected';}; ?>>普通車</option>
-	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車</option>
+	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車等</option>
 	  <option value="2" <?php if(!empty($car)&&$car==2){print 'selected';}; ?>>中型車</option>
       <option value="3" <?php if(!empty($car)&&$car==3){print 'selected';}; ?>>大型車</option>
 	  <option value="4" <?php if(!empty($car)&&$car==4){print 'selected';}; ?>>特大車</option>
@@ -80,11 +80,28 @@
   <p class="inline middleFont"><strong>ソート順</strong></p>
   <select class="middleFont puldown-1" name="sort" id="sortBy">
     <option value="0" <?php if(!empty($sort)&&$sort==0){print 'selected';}; ?>>距離</option>
-	<option value="1" <?php if(!empty($sort)&&$sort==1){print 'selected';}; ?>>料金</option>
+    <option value="1" <?php if(!empty($sort)&&$sort==1){print 'selected';}; ?>>時間</option>
+	  <option value="2" <?php if(!empty($sort)&&$sort==2){print 'selected';}; ?>>料金</option>
+  </select>
+  <i class="pad"></i>
+
+  <!--　天気表示　切り替え　-->  <!--変数は後で設定して-->
+  <p class="inline middleFont"><strong>天気表示</strong></p>
+  <select class="middleFont puldown-1" name="sort" id="/*変数*/">
+    <option value="0" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==0){print 'selected';}; ?>>無し</option>
+    <option value="1" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==1){print 'selected';}; ?>>出発地</option>
+    <option value="2" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==2){print 'selected';}; ?>>到着地</option>
+  </select>
+
+  <!--　天気表示　選択地域　-->    <!--変数は後で設定して-->
+  <i class="smallpad"></i>
+  <select class="middleFont puldown-1" name="sort" id="/*変数*/">
+    <option value="0">-----</option>
+      <!--ここに選択された都道府県の天気選択肢を設定-->
   </select>
 
   <!--　送信ボタン　onclickイベントは設定してね　-->
-  <i style="padding-left:677px" ></i>
+  <i style="padding-left:317px" ></i>
   <button type="submit" class="btnicon-MousePoint middleFont puldown-1" name="button">検索</button>
   </form>
 </div>
@@ -132,7 +149,7 @@
       @endforeach
     @endforeach
   });
-  
+
   function change(){
 	var inPref = $("#startPref").val();
 	var outPref = $("#goalPref").val();
@@ -141,7 +158,7 @@
 
 	$("#inIc").empty();
 	$("#outIc").empty();
-	
+
 	$("#startPref").empty();
 	@foreach(config('pref') as $index => $name)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -152,7 +169,7 @@
 
 		}
     @endforeach
-	
+
 	$("#goalPref").empty();
 	@foreach(config('pref') as $index => $name)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -173,11 +190,11 @@
 						$("#inIc").append($("<option selected>").val("{{$name}}").text("{{$n}}"));
 					}else{
 						$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
-					}	
+					}
 				}
 			@endforeach
 		@endforeach
-		
+
 	  @foreach(config('ic') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
@@ -186,7 +203,7 @@
 						$("#outIc").append($("<option selected>").val("{{$name}}").text("{{$n}}"));
 					}else{
 						$("#outIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
-					}	
+					}
 				}
 			@endforeach
 		@endforeach

@@ -65,7 +65,7 @@
         }
         .puldown-1{
           text-align: center;
-          width: 110px;
+          width: 120px;
           height: 40px;
           border: solid 2px Dimgray;
           border-radius: 8px/8px;
