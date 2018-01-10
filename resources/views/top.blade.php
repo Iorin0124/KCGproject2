@@ -69,7 +69,7 @@
     <p class="inline middleFont"><strong>車種選択</strong></p>
     <select class="middleFont puldown-1" name="car" id="carModel">
       <option value="0" <?php if(!empty($car)&&$car==0){print 'selected';}; ?>>普通車</option>
-	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車</option>
+	  <option value="1" <?php if(!empty($car)&&$car==1){print 'selected';}; ?>>軽自動車等</option>
 	  <option value="2" <?php if(!empty($car)&&$car==2){print 'selected';}; ?>>中型車</option>
       <option value="3" <?php if(!empty($car)&&$car==3){print 'selected';}; ?>>大型車</option>
 	  <option value="4" <?php if(!empty($car)&&$car==4){print 'selected';}; ?>>特大車</option>

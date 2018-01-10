@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class topController extends Controller
 {
     public function search(Request $request){
-		$cars = ['普通車','軽自動車','中型車','大型車','特大車'];
+		$cars = ['普通車','軽自動車等','中型車','大型車','特大車'];
 		$choice = ['距離','料金'];
 		
 		$startP = $request->input('startP',1);
