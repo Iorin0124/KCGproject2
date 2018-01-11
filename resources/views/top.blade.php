@@ -209,9 +209,10 @@
 @endif
 	 
 <!--　div内に検索した情報を表示する　フェッチに書き換えてくれてok　-->
-@if(!empty($inIC))
+@if(!empty($item))
+	<? echo($item); ?>
   <div class="padt-2 padl-2">
-    <table class="tablespace middleFont">
+    <table class="tablespace middleFont" border="1">
       <thead>
       <tr>
         <th>料金</th><th>距離</th><th>時間</th><th>パラメータ</th><th>書いてね</th>
@@ -219,9 +220,16 @@
       </thead>
 		<tbody>
 		@for($i=0 ; $i<count($item) ; $i++)
-		  <tr>
-			<td>{{$item[$i]}}</td><td>{{$dis}}</td><td>{{$inIC}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
-		</tr>
+			<tr><th colspan="5">ルート{{$i+1}}</th></tr>
+			@for($j=0 ; $j<count($item[$i]) ; $j++)
+			<tr>
+			@if($j==0)
+				<td>{{$item[$i][$j]}}</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
+			@else
+				<td>{{$item[$i][$j]}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
+			@endif
+			</tr>
+			@endfor
 		@endfor
 		</tbody>
     </table>
