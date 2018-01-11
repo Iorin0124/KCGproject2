@@ -41,26 +41,39 @@ class topController extends Controller
 		if($inIC == $outIC){
 			$alert = "出発ICと到着ICに同一のものが選択されています。";
 
-			return view('top',compact('alert'));		
+				return view('top',compact('alert','startP','inIC','goalP','outIC','route'));		
 		}else{
 			$xml = 'http://kosoku.jp/api/route.php?f='.$inIC.'&t='.$outIC.'&c='.$cars[$car].'&sortBy='.$choice[$sort];
 			$url = simplexml_load_file($xml) or die("XMLパースエラー");
 			//各パラメータの取得は分かったので、表に記すものを考える。
-			$rote = (string)$url->Status;
+			$route = (string)$url->Status;
 
-			if($rote == 'End'){
-				//距離
-				$dis = (string)$url->Routes->Route->Summary->TotalLength;
+			if($route == 'End'){
+/*				//距離
+				dis = (string)$url->Routes->Route->Summary->TotalLength;
 				//各料金の取得
-				foreach($url->Routes->Route->Details->Section->Tolls->Toll as $value){
-					$item[] = (string)$value;
+				foreach($url->Routes->Route->Details->Section->Tolls as $value){
+					foreach($value->Toll as $_value){
+						$item[] = (string)$_value;
+					}
+				}
+*/
+				$count = 0;
+				foreach($url->Routes->Route as $value){
+					foreach($value->Details->Section->Tolls->Toll as $toll){
+						$item[$count][] = (string)$toll;
+					}
+					$dis[$count] = (string)$value->Summary->TotalLength;
+					$time[$count] = 0;
+					$time[$count] = (string)$value->Summary->TotalTime;
+					$count++;
 				}
 
-				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis','weather'));
+				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis','weather','route','time'));
 			}else{
 				$alert = "ルートが見つかりませんでした。";
 							
-				return view('top',compact('alert'));
+				return view('top',compact('alert','startP','inIC','goalP','outIC','route'));
 			}
 		}
 	}
