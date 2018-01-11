@@ -88,7 +88,7 @@
         }
         th{
           padding: 2px;
-          width: 20%;
+          width: 25%;
           border-bottom: solid Dimgray 2px;
           background-color: PaleTurquoise;
         }
