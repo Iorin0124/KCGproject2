@@ -9,3 +9,6 @@ http://www.nankuma.com/etc/livedoor-weather-id.html
 
 経路地図API
 https://developer.yahoo.co.jp/webapi/map/openlocalplatform/v1/routemap.html
+
+高速道路 - 座標データ
+https://www.ajaxtower.jp/googlemaps/data/index6.html

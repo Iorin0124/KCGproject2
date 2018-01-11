@@ -61,7 +61,7 @@
   <i class="smallpad" style="padding-left:12px"></i>
 
 <!--　出発地と目的地の入れ替えボタン　onclickイベントは設定してね　-->
-<button type="button" onclick="change();" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton">入替</button>
+<button type="button" class="btnicon-Refresh inline middleFont puldown-1" name="Rbutton" id="change">入替</button>
 </div>
 
   <!--　車種　-->
@@ -87,18 +87,38 @@
 
   <!--　天気表示　切り替え　-->  <!--変数は後で設定して-->
   <p class="inline middleFont"><strong>天気表示</strong></p>
-  <select class="middleFont puldown-1" name="sort" id="/*変数*/">
-    <option value="0" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==0){print 'selected';}; ?>>無し</option>
-    <option value="1" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==1){print 'selected';}; ?>>出発地</option>
-    <option value="2" <?php if(!empty($aaa/*$変数*/)&&$aaa/*$変数*/==2){print 'selected';}; ?>>到着地</option>
+  <select class="middleFont puldown-1" name="wShow" id="show">
+    <option value="0" <?php if(!empty($wShow)&&$wShow==0){print 'selected';}; ?>>無し</option>
+    <option value="1" <?php if(!empty($wShow)&&$wShow==1){print 'selected';}; ?>>出発地</option>
+    <option value="2" <?php if(!empty($wShow)&&$wShow==2){print 'selected';}; ?>>到着地</option>
   </select>
 
   <!--　天気表示　選択地域　-->    <!--変数は後で設定して-->
   <i class="smallpad"></i>
-  <select class="middleFont puldown-1" name="sort" id="/*変数*/">
-    <option value="0">-----</option>
-      <!--ここに選択された都道府県の天気選択肢を設定-->
-  </select>
+  <select class="middleFont puldown-1" name="choiceIC" id="choice">
+@if(!empty($wShow))
+  @foreach(config('weatherName') as $index => $i)
+      @foreach($i as $name => $n)
+	  	@if($wShow==1)
+			@if(empty($inIC))
+			  <option value="{{$name}}">{{$n}}</option>
+			@elseif(!empty($inIC)&&$index==$startP)
+			  <option value="{{$name}}" <?php if($inIC==$n){print 'selected';}; ?>>{{$n}}</option>
+			@endif
+		@elseif($wShow==2)
+			@if(empty($outIC))
+			  <option value="{{$name}}">{{$n}}</option>
+			@elseif(!empty($outIC)&&$index==$goalP)
+			  <option value="{{$name}}" <?php if($outIC==$n){print 'selected';}; ?>>{{$n}}</option>
+			@endif
+		@endif
+      @endforeach
+    @endforeach
+@else
+	<option value="0">-----</option>
+@endif
+
+	</select>
 
   <!--　送信ボタン　onclickイベントは設定してね　-->
   <i style="padding-left:317px" ></i>
@@ -135,6 +155,19 @@
 				}
 			@endforeach
 		@endforeach
+	if(($("#show").val())==1){
+		var choice = $("#startPref").val();
+		$("#choice").empty();
+		@foreach(config('weatherName') as $index => $i)
+			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(choice==index){
+				  $("#choice").append($("<option>").val("{{$name}}").text("{{$n}}"));
+				}
+			  @endforeach
+			@endforeach
+	}
+
   });
   $("#goalPref").change(function(){
     var prefnum = $(this).val();
@@ -148,9 +181,46 @@
         }
       @endforeach
     @endforeach
+	
+	if(($("#show").val())==2){
+		var choice = $("#goalPref").val();
+		$("#choice").empty();
+		@foreach(config('weatherName') as $index => $i)
+			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(choice==index){
+				  $("#choice").append($("<option>").val("{{$name}}").text("{{$n}}"));
+				}
+			  @endforeach
+			@endforeach
+	}
+
+
+  });
+  
+  $("#show").change(function(){
+	var choice = $(this).val();
+	$("#choice").empty();
+		if(choice==1){
+			choice = $("#startPref").val();
+		}else if(choice==2){
+			choice = $("#goalPref").val();
+		}
+	if(choice!=0){
+	@foreach(config('weatherName') as $index => $i)
+		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+		@foreach($i as $name => $n)
+			if(choice==index){
+			  $("#choice").append($("<option>").val("{{$name}}").text("{{$n}}"));
+			}
+		  @endforeach
+		@endforeach
+	}else{
+		$("#choice").append($("<option>").val("0").text("-----"));
+	}
   });
 
-  function change(){
+  $("#change").click(function(){
 	var inPref = $("#startPref").val();
 	var outPref = $("#goalPref").val();
 	var inIC = $("#inIc").val();
@@ -207,7 +277,27 @@
 				}
 			@endforeach
 		@endforeach
-  }
+		
+	if(($("#choice").val())!=0){
+		var choice = $("#show").val();
+		$("#choice").empty();
+		if(choice==1){
+			var pref = $("#startPref").val();
+		}else if(choice==2){
+			var pref = $("#goalPref").val();
+		}
+		@foreach(config('weatherName') as $index => $i)
+			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+			@foreach($i as $name => $n)
+				if(pref==index){
+				  $("#choice").append($("<option>").val("{{$name}}").text("{{$n}}"));
+				}
+		  @endforeach
+		@endforeach
+		console.log(choice);
+	}
+
+  });
 </script>
 
 

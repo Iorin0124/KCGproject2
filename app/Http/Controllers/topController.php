@@ -13,7 +13,8 @@ class topController extends Controller
 		$startP = $request->input('startP',1);
 		$inIC = $request->input('inIC',1);
 
-		$weather = "020010";
+		$choiceIC = $request->input('choiceIC',0);
+		$wShow = $request->input('wShow',0);
 		
 		$goalP = $request->input('goalP',1);
 		$outIC = $request->input('outIC',1);
@@ -38,6 +39,14 @@ class topController extends Controller
 			}
 		}	
 		
+		foreach(config('weatherId') as $index => $i){
+			if($index==$choiceIC){
+				$weather = $i;
+				break;
+			}
+		}
+
+		
 		if($inIC == $outIC){
 			$alert = "出発ICと到着ICに同一のものが選択されています。";
 
@@ -61,15 +70,18 @@ class topController extends Controller
 				$count = 0;
 				foreach($url->Routes->Route as $value){
 					foreach($value->Details->Section->Tolls->Toll as $toll){
+						//各ルートの料金
 						$item[$count][] = (string)$toll;
 					}
+					//各ルートの距離
 					$dis[$count] = (string)$value->Summary->TotalLength;
+					//各ルートの所要時間
 					$time[$count] = 0;
 					$time[$count] = (string)$value->Summary->TotalTime;
 					$count++;
 				}
-
-				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis','weather','route','time'));
+				
+				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis','weather','route','time','wShow'));
 			}else{
 				$alert = "ルートが見つかりませんでした。";
 							
