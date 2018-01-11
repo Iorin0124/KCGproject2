@@ -232,18 +232,18 @@
     <table class="tablespace middleFont" border="1">
       <thead>
       <tr>
-        <th>料金</th><th>距離</th><th>時間</th><th>パラメータ</th><th>書いてね</th>
+        <th>ルート</th><th>料金表</th><th>距離</th><th>時間</th><th>詳細</th>
       </tr>
       </thead>
 		<tbody>
 		@for($i=0 ; $i<count($item) ; $i++)
-			<tr><th colspan="5">ルート{{$i+1}}</th></tr>
 			@for($j=0 ; $j<count($item[$i]) ; $j++)
 			<tr>
 			@if($j==0)
-				<td>{{$item[$i][$j]}}</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
+				<td rowspan={{count($item[$i])}}><a href=>ルート{{$i+1}}</a></td>
+				<td>{{$item[$i][$j]}}</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}</td><td>{{$outIC}}</td>
 			@else
-				<td>{{$item[$i][$j]}}</td><td>{{$outIC}}</td><td>{{$inIC}}</td>
+				<td>{{$item[$i][$j]}}</td><td>{{$outIC}}</td>
 			@endif
 			</tr>
 			@endfor
