@@ -80,8 +80,20 @@
         .divspace{
           width: 1200px;
         }
+        .img-div{
+          float:left;
+          border:solid 2px Dimgray;
+          width:700px;
+          height:600px;
+        }
         .tablespace{
           width: 1200px;
+          text-align: center;
+          border: solid 2px Dimgray;
+          border-collapse: collapse;
+        }
+        .tablespace-2{
+          width: 500px;
           text-align: center;
           border: solid 2px Dimgray;
           border-collapse: collapse;
@@ -94,7 +106,6 @@
         }
         td{
           padding: 1px;
-
           background-color: AliceBlue;
         }
 
@@ -137,7 +148,7 @@
       <!-- 共通のヘッダー -->
       <p class="headcol"><a href="top"><img src="../img/topIcon01.png" alt="top icon" height="80px;" width="290px;"></a></p>
       <div class="headcol pad middleFont"><center>
-        <a href="top" class="padr">ICから検索</a>
+        <a href="top" class="padr">IC名から検索</a>
         <a href="top" class="padr">ダミーリンク</a>
         <a href="my" class="padr">マイページへ</a>
         <a href="new" class="padr">新規登録</a>

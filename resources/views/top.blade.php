@@ -3,11 +3,8 @@
 @section('title','高速案内 Top')
 
 @section('content')
-<!--　決まり文句　-->
-
-
 <!--　検索に必要な条件の設定フォーム　-->
-  <p class="btnicon-Search largeFont padl">ICからルート検索</p>
+  <p class="btnicon-Search largeFont padl">IC名からルート検索</p>
   <!--　出発　都道府県選択　-->
   <div>
   <form class="padl-2" action="{{route('top/')}}" method="POST">
@@ -240,7 +237,7 @@
 			@for($j=0 ; $j<count($item[$i]) ; $j++)
 			<tr>
 			@if($j==0)
-				<td rowspan={{count($item[$i])}}><a href=>ルート{{$i+1}}</a></td>
+				<td rowspan={{count($item[$i])}}><a href="details">ルート{{$i+1}}</a></td>
 				<td>{{$item[$i][$j]}}</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}km</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}分</td>
 			@else
 				<td>{{$item[$i][$j]}}</td>
