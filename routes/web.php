@@ -39,6 +39,10 @@ Route::get('caution/', function () {
     return view('caution');
 });
 
+Route::get('details/', function () {
+    return view('details');
+});
+
 Route::get('test/', 'TestController@test');
 
 Route::post('test/',[
