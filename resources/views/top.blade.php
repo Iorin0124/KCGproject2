@@ -94,7 +94,7 @@
   <i class="smallpad"></i>
   <select class="middleFont puldown-1" name="choiceIC" id="choice">
 @if(!empty($wShow))
-  @foreach(config('weatherName') as $index => $i)
+  @foreach(config('weathername') as $index => $i)
       @foreach($i as $name => $n)
 	  	@if($wShow==1)
 			@if(empty($inIC))
@@ -155,7 +155,7 @@
 	if(($("#show").val())==1){
 		var choice = $("#startPref").val();
 		$("#choice").empty();
-		@foreach(config('weatherName') as $index => $i)
+		@foreach(config('weathername') as $index => $i)
 			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
 				if(choice==index){
@@ -182,7 +182,7 @@
 	if(($("#show").val())==2){
 		var choice = $("#goalPref").val();
 		$("#choice").empty();
-		@foreach(config('weatherName') as $index => $i)
+		@foreach(config('weathername') as $index => $i)
 			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
 				if(choice==index){
@@ -204,7 +204,7 @@
 			choice = $("#goalPref").val();
 		}
 	if(choice!=0){
-	@foreach(config('weatherName') as $index => $i)
+	@foreach(config('weathername') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 		@foreach($i as $name => $n)
 			if(choice==index){
@@ -283,7 +283,7 @@
 		}else if(choice==2){
 			var pref = $("#goalPref").val();
 		}
-		@foreach(config('weatherName') as $index => $i)
+		@foreach(config('weathername') as $index => $i)
 			var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
 				if(pref==index){

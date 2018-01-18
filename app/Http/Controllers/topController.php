@@ -39,7 +39,7 @@ class topController extends Controller
 			}
 		}	
 		
-		foreach(config('weatherId') as $index => $i){
+		foreach(config('weatherid') as $index => $i){
 			if($index==$choiceIC){
 				$weather = $i;
 				break;
