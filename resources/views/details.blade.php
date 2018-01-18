@@ -7,7 +7,7 @@
 
   <div class="padl-2" style="overflow:hidden">
     <div class="headcol img-div" style="float:left;">
-      <img src="../img/kari.jpg" alt="経路地図" style="width:700px; height=600px;">
+      <img src="../img/" alt="経路地図" style="width:700px; height=600px;">
     </div>
     <div  style="float:right;">
       <table class="tablespace-2">

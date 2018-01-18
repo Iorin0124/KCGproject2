@@ -150,8 +150,8 @@
       <div class="headcol pad middleFont"><center>
         <a href="top" class="padr">IC名から検索</a>
         <a href="top" class="padr">ダミーリンク</a>
-        <a href="my" class="padr">マイページへ</a>
-        <a href="new" class="padr">新規登録</a>
+    <!--    <a href="my" class="padr">マイページへ</a>
+        <a href="new" class="padr">新規登録</a>   -->
         <a href="bonus" class="padr">おまけ</a>
       </center></div>
       <!--  ここまでがヘッダー  -->
