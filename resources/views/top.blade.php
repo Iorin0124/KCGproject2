@@ -77,8 +77,7 @@
   <p class="inline middleFont"><strong>ソート順</strong></p>
   <select class="middleFont puldown-1" name="sort" id="sortBy">
     <option value="0" <?php if(!empty($sort)&&$sort==0){print 'selected';}; ?>>距離</option>
-    <option value="1" <?php if(!empty($sort)&&$sort==1){print 'selected';}; ?>>時間</option>
-	  <option value="2" <?php if(!empty($sort)&&$sort==2){print 'selected';}; ?>>料金</option>
+    <option value="1" <?php if(!empty($sort)&&$sort==1){print 'selected';}; ?>>料金</option>
   </select>
   <i class="pad"></i>
 
