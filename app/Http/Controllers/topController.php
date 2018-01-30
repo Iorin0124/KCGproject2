@@ -86,6 +86,7 @@ class topController extends Controller
 				}
 				//viewを通して別Controllerに値を送る方法とは
 				//グローバル変数＝＞何かは持ってこれてるけど何が持ってこれてるかわかんね、配列でないと怒られる
+				//セッションを利用する。
 				//Config(['detailData' => $item]);
 				//Config::set('detailData','item');
 				Session::put('item',$item);
