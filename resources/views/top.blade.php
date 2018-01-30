@@ -326,8 +326,8 @@
 			@for($j=0 ; $j<count($item[$i]) ; $j++)
 			<tr>
 			@if($j==0)
-				<td rowspan={{count($item[$i])}}><a href="details">ルート{{$i+1}}</a></td>
-				<td>{{$item[$i][$j]}}</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}km</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}分</td>
+				<td rowspan={{count($item[$i])}}><a href="{{ action('DetailController@result')}}" value={{$i}} name="routeNo">ルート{{$i+1}}</a></td>
+				<td>通常料金{{$item[$i][$j]}}円</td><td rowspan={{count($item[$i])}}>{{$dis[$i]}}km</td><td rowspan={{count($item[$i])}}>{{$time[$i]}}分</td>
 			@else
 				<td>{{$item[$i][$j]}}</td>
 			@endif

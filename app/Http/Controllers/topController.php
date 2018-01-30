@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
+
+//use Illuminate\Support\Facades\Config;
 
 class topController extends Controller
 {
@@ -69,10 +72,11 @@ class topController extends Controller
 */
 				$count = 0;
 				foreach($url->Routes->Route as $value){
-					foreach($value->Details->Section->Tolls->Toll as $toll){
+				/*	foreach($value->Details->Section->Tolls->Toll as $toll){
 						//各ルートの料金
 						$item[$count][] = (string)$toll;
-					}
+					}*/
+					$item[$count][] = (string)$value->Summary->TotalToll;
 					//各ルートの距離
 					$dis[$count] = (string)$value->Summary->TotalLength;
 					//各ルートの所要時間
@@ -80,6 +84,11 @@ class topController extends Controller
 					$time[$count] = (string)$value->Summary->TotalTime;
 					$count++;
 				}
+				//viewを通して別Controllerに値を送る方法とは
+				//グローバル変数＝＞何かは持ってこれてるけど何が持ってこれてるかわかんね、配列でないと怒られる
+				//Config(['detailData' => $item]);
+				//Config::set('detailData','item');
+				Session::put('item',$item);
 				
 				return view('top',compact('startP','inIC','goalP','outIC','car','sort','item','dis','weather','route','time','wShow'));
 			}else{

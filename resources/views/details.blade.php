@@ -4,7 +4,20 @@
 
 @section('content')
   <p class="largeFont padl">ルート詳細</p>
-
+ 
+	@if(!empty($result))
+	@foreach($result as $key => $val)
+		@for($i=0 ; $i<count($val) ; $i++)
+			{{$val[$i][1]}}
+		@endfor
+		<br>
+	@endforeach
+	@endif
+	
+	@if(!empty($item))
+	{{$item[0][0]}}
+	@endif
+	
   <div class="padl-2" style="overflow:hidden">
     <div class="headcol img-div" style="float:left;">
       <img src="../img/" alt="経路地図" style="width:700px; height=600px;">

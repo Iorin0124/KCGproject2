@@ -52,3 +52,7 @@ Route::post('test/',[
 Route::post('top/',[
 	'uses'=>'topController@search',
 	'as'=>'top/']);
+	
+Route::get('details',[
+	'uses'=>'DetailController@result',
+	'as'=>'details/']);
