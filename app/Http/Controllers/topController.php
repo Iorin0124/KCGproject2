@@ -76,12 +76,18 @@ class topController extends Controller
 						//各ルートの料金
 						$item[$count][] = (string)$toll;
 					}*/
-					$item[$count][] = (string)$value->Summary->TotalToll;
+					foreach($value->Details->Section->SubSections->SubSection as $sec){
+						$item[$count]['From'][] = (string)$sec->From;
+						$item[$count]['To'][] = (string)$sec->To;
+						$item[$count]['Road'][] = (string)$sec->Road;
+						$item[$count]['Length'][] = (string)$sec->Length;
+						$item[$count]['Time'][] = (string)$sec->Time;
+					}
+					$item[$count]['totalToll'] = (string)$value->Summary->TotalToll;
 					//各ルートの距離
-					$dis[$count] = (string)$value->Summary->TotalLength;
+					$item[$count]['dis'] = (string)$value->Summary->TotalLength;
 					//各ルートの所要時間
-					$time[$count] = 0;
-					$time[$count] = (string)$value->Summary->TotalTime;
+					$item[$count]['time'] = (string)$value->Summary->TotalTime;
 					$count++;
 				}
 				//viewを通して別Controllerに値を送る方法とは
