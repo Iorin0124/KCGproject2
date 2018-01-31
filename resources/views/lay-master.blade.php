@@ -146,7 +146,7 @@
     <!-- ここに中身を書いていく(HTML) -->
     <body>
       <!-- 共通のヘッダー -->
-      <p class="headcol"><a href="top"><img src="../img/topIcon01.png" alt="top icon" height="80px;" width="290px;"></a></p>
+      <p class="headcol"><a href="top"><img src="../img/iconn.png" alt="top icon" height="80px;" style="margin-left:5px;margin-top:5px;"></a></p>
       <div class="headcol pad middleFont"><center>
         <a href="top" class="padr">IC名から検索</a>
         <a href="top" class="padr">ダミーリンク</a>
