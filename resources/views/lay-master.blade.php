@@ -98,6 +98,16 @@
           border: solid 2px Dimgray;
           border-collapse: collapse;
         }
+        .tableborder-0{
+          border-right: solid 1px Dimgray;
+        }
+        .tableborder-1{
+          border-right: solid 1px Dimgray;
+          border-bottom: solid 1px Dimgray;
+        }
+        .tableborder-2{
+          border-bottom: solid 1px Dimgray;
+        }
         th{
           padding: 2px;
           width: 25%;
