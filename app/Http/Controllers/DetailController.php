@@ -16,7 +16,48 @@ class DetailController extends Controller
 		}else{
 			$item("aaa");
 		}
+<<<<<<< HEAD
+		
+		$choice = $request->input('routeNo',0);
+		
+		for($i=0 ; $i<count($item[$choice]['From']) ; $i++){
+			if($i==0)$xml[] = 'http://www.geocoding.jp/api/?v=1.1&q='.($item[$choice]['From'][$i]).' '.($item[$choice]['Road'][$i]);
+			$xml[] = 'http://www.geocoding.jp/api/?v=1.1&q='.($item[$choice]['To'][$i]).' '.($item[$choice]['Road'][$i]);
+		}
+		
+		for($i=0 ; $i<count($xml) ; $i++){
+			$url[] = simplexml_load_file($xml[$i]) or die("XMLパースエラー");
+			$geocode[] = (string)$url[$i]->coordinate->lat;
+			$geocode[] = (string)$url[$i]->coordinate->lng;
+			if(empty($geocode[count($geocode)-1])){
+				$geocode = array();
+				break;
+			}
+		}
+		
+		if(!empty($geocode)){
+			$urlStr = "";
+			$pinStr = "";
+			for($i=0 ; $i<count($geocode) ; $i++){
+			//	if($geocode[$i]==$geocode[$i+2])break;
+				$urlStr .= $geocode[$i];
+				if($i != count($geocode)-1)$urlStr .= ",";
+			}
+			for($i=0 ; $i<count($geocode) ; $i++){
+				if($i == count($geocode)-2)break;
+				if($i!=0)$pinStr .= "&pin=".$geocode[$i].",".$geocode[$i+1];
+				$i++;
+			}
+		}
+		
+//		$xml = 'https://www.geocoding.jp/api/?v=1.1&q=;
+//		$url = simplexml_load_file($xml) or die("XMLパースエラー");
 
+		
+	/*JSONタイプ	
+=======
+
+>>>>>>> 40e445c5db88dbbdc03a5c192f92e9b69c566600
 		$highway = ["東名高速道路","中央高速道路","名神高速道路","東名神高速道路","東名神高速道路","伊勢湾岸自動車道","常盤自動車道","磐越自動車道","東北自動車道","秋田自動車道","関越自動車道","中国自動車道","山陽自動車道","山陽自動車道","山陽自動車","山陽自動車道","山陽自動車道","米子自動車道","九州自動車道","大分自動車道","大分自動車道","長崎自動車道","宮崎自動車道","北陸自動車道","上信越自動車道","東海北陸自動車道","東海北陸自動車道","道央自動車道","札幌自動車道","道東自動車道","道東自動車道","道東自動車","松山自動車道","松山自動車道","高松自動車道","高松自動車道","徳島自動車道","高知自動車道"];
 
 		$url[] = "https://www.ajaxtower.jp/googlemaps/data/data/highway-toumei.json";
@@ -70,7 +111,13 @@ class DetailController extends Controller
 				$result[$highway[$i]][$j][] = $arr['marker'][$j]['lng'];
 			}
 		};
+<<<<<<< HEAD
+	*/
+		
+		return view('details',compact('geocode','item','choice','urlStr','pinStr'));
+=======
 
 		return view('details',compact('result','item'));
+>>>>>>> 40e445c5db88dbbdc03a5c192f92e9b69c566600
 	}
 }
