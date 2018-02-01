@@ -38,12 +38,13 @@ class DetailController extends Controller
 			$urlStr = "";
 			$pinStr = "";
 			for($i=0 ; $i<count($geocode) ; $i++){
+			//	if($geocode[$i]==$geocode[$i+2])break;
 				$urlStr .= $geocode[$i];
 				if($i != count($geocode)-1)$urlStr .= ",";
 			}
 			for($i=0 ; $i<count($geocode) ; $i++){
-				if($i == count($geocode)-1)break;
-				$pinStr .= $geocode[$i].",".$geocode[$i+1];
+				if($i == count($geocode)-2)break;
+				if($i!=0)$pinStr .= "&pin=".$geocode[$i].",".$geocode[$i+1];
 				$i++;
 			}
 		}

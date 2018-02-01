@@ -17,15 +17,13 @@
 	
   <div class="padl-2" style="overflow:hidden">
   	@if(!empty($urlStr))
-		<!-- 地図リクエストURLが生成されたとき -->
-		<!-- $urlStrが&routeの中身、$pinStrが&pinの中身-->
-		{{$urlStr}}<br>{{$pinStr}}<br>
 		<div class="headcol img-div" style="float:left;" id="map">
-		<img src="../img/" alt="経路地図" style="width:700px; height=600px;">
+		<img src="https://map.yahooapis.jp/course/V1/routeMap?appid=dj00aiZpPU8wNHp2UFFsNkkzWiZzPWNvbnN1bWVyc2VjcmV0Jng9YWM-&route={{$urlStr}}|width:7|color:ff4500{{$pinStr}}&height=600&width=700&style=grayish">
 		</div>
 	@else
 		<!-- 一つでも地点の緯度経度が見つからなかった場合。文章がページの端っこにいくんで調整できたらお願いします。 -->
 		<h3>申し訳ございませんマップを表示することができませんでした。</h3>
+		<img src="../img/" alt="経路地図" style="width:700px; height=600px;">
 	@endif
     <div  style="float:right;">
       <table class="tablespace-2">
