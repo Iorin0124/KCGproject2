@@ -49,10 +49,12 @@ Route::post('test/',[
 	'uses'=>'TestController@getNumber',
 	'as'=>'test/']);
 
+//form送信された場合にControllerを経由してからTopページを表示するルート
 Route::post('top/',[
 	'uses'=>'topController@search',
 	'as'=>'top/']);
 	
+//ルートが選択された際に詳細ページを表示するルート
 Route::get('details',[
 	'uses'=>'DetailController@result',
 	'as'=>'details/']);

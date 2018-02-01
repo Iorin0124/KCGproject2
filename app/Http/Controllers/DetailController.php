@@ -16,14 +16,17 @@ class DetailController extends Controller
 		}else{
 			$item("aaa");
 		}
-
+		
+		//ルートのうち何番が選ばれたか(formを使わずにviewからControllerに値を持ってくることができませんでした、模索中)
 		$choice = $request->input('routeNo',0);
-
+		
 		for($i=0 ; $i<count($item[$choice]['From']) ; $i++){
+			//経由地の数だけジオコードをXML形式で取得
 			if($i==0)$xml[] = 'http://www.geocoding.jp/api/?v=1.1&q='.($item[$choice]['From'][$i]).' '.($item[$choice]['Road'][$i]);
 			$xml[] = 'http://www.geocoding.jp/api/?v=1.1&q='.($item[$choice]['To'][$i]).' '.($item[$choice]['Road'][$i]);
 		}
-
+		
+		//XMLパースを実行する
 		for($i=0 ; $i<count($xml) ; $i++){
 			$url[] = simplexml_load_file($xml[$i]) or die("XMLパースエラー");
 			$geocode[] = (string)$url[$i]->coordinate->lat;
@@ -33,28 +36,27 @@ class DetailController extends Controller
 				break;
 			}
 		}
-
+		
+		//リクエストURLを生成するための文字列を生成する
 		if(!empty($geocode)){
 			$urlStr = "";
 			$pinStr = "";
 			for($i=0 ; $i<count($geocode) ; $i++){
+				//ルート部分のリクエストURLの作成
 				$urlStr .= $geocode[$i];
 				if($i != count($geocode)-1)$urlStr .= ",";
 			}
 			for($i=0 ; $i<count($geocode) ; $i++){
-				if($i == count($geocode)-1)break;
-				$pinStr .= $geocode[$i].",".$geocode[$i+1];
+				//経由地がある場合、経由地にピンを作成するためのリクエストURLの生成
+				if($i == count($geocode)-2)break;
+				if($i!=0)$pinStr .= "&pin=".$geocode[$i].",".$geocode[$i+1];
 				$i++;
 			}
 		}
 
-//		$xml = 'https://www.geocoding.jp/api/?v=1.1&q=;
-//		$url = simplexml_load_file($xml) or die("XMLパースエラー");
-
-
-	/*JSONタイプ
+	/*JSONタイプ(最新の高速道路及びICがないので没)
 		$highway = ["東名高速道路","中央高速道路","名神高速道路","東名神高速道路","東名神高速道路","伊勢湾岸自動車道","常盤自動車道","磐越自動車道","東北自動車道","秋田自動車道","関越自動車道","中国自動車道","山陽自動車道","山陽自動車道","山陽自動車","山陽自動車道","山陽自動車道","米子自動車道","九州自動車道","大分自動車道","大分自動車道","長崎自動車道","宮崎自動車道","北陸自動車道","上信越自動車道","東海北陸自動車道","東海北陸自動車道","道央自動車道","札幌自動車道","道東自動車道","道東自動車道","道東自動車","松山自動車道","松山自動車道","高松自動車道","高松自動車道","徳島自動車道","高知自動車道"];
-
+		
 		$url[] = "https://www.ajaxtower.jp/googlemaps/data/data/highway-toumei.json";
 		$url[] = "https://www.ajaxtower.jp/googlemaps/data/data/highway-chuou.json";
 		$url[] = "https://www.ajaxtower.jp/googlemaps/data/data/highway-meishin.json";
@@ -71,7 +73,7 @@ class DetailController extends Controller
 			}
 		};
 	*/
-
+		
 		return view('details',compact('geocode','item','choice','urlStr','pinStr'));
 	}
 }
