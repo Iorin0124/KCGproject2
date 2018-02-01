@@ -192,10 +192,8 @@
 			  @endforeach
 			@endforeach
 	}
-
-
   });
-  
+
   //天気の表示の有無が変更された場合
   $("#show").change(function(){
 	var choice = $(this).val();
@@ -231,7 +229,7 @@
 
 	$("#inIc").empty();
 	$("#outIc").empty();
-	
+
 	//選択されていた出発地の都道府県を消去し、到着地に入っていた都道府県を選択する
 	$("#startPref").empty();
 	@foreach(config('pref') as $index => $name)
@@ -240,7 +238,6 @@
 			$("#startPref").append($("<option>").val("{{$index}}").text("{{$name}}"));
 		}else{
 			$("#startPref").append($("<option selected>").val("{{$index}}").text("{{$name}}"));
-
 		}
     @endforeach
 	//選択されていた到着地の都道府県を消去し、出発地に入っていた都道府県を選択する
@@ -251,7 +248,6 @@
 			$("#goalPref").append($("<option>").val("{{$index}}").text("{{$name}}"));
 		}else{
 			$("#goalPref").append($("<option selected>").val("{{$index}}").text("{{$name}}"));
-
 		}
     @endforeach
 
@@ -282,7 +278,7 @@
 				}
 			@endforeach
 		@endforeach
-	
+
 	//天気の表示が選ばれていた場合、再度出発地か到着地か判別し対応したものに中身を変更する
 	if(($("#choice").val())!=0){
 		var choice = $("#show").val();
@@ -302,7 +298,6 @@
 		@endforeach
 		console.log(choice);
 	}
-
   });
 </script>
 

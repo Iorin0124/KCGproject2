@@ -1,0 +1,32 @@
+成果物　clone用
+https://github.com/Iorin0124/KCGproject2
+
+Gitのインストール方法
+http://www.atmarkit.co.jp/ait/articles/1603/31/news026.html
+
+Composerのインストール方法とその下準備の方法
+https://weblabo.oscasierra.net/php-composer-windows-install/
+http://vdeep.net/php-composer
+
+PHPのインストール方法
+https://weblabo.oscasierra.net/php-56-windows-install/
+
+GitCloneしてからの手順
+http://vdeep.net/laravel-git-clone
+
+
+経路地図API　アプリケーションキー
+base64:ILeTijN1ybfEjkIA1b1V437aYr8obmkzHjrAsSYUNZk=
+
+
+1.Gitのインストール
+2.Githubから自身のアカウントで内容をclone
+  (現状、プロジェクト参加メンバーしか編集、clone不可に設定してある(セキュリティの為))
+3.phpのインストール
+4.phpのPath設定
+5.Composerのインストール
+6.ComposerのPath設定
+7."composer update"　コマンドをプロジェクト内部にてコンソール入力
+8."composer install"　コマンドをプロジェクト内部にてコンソール入力
+9."git pull"　コマンドをプロジェクト内部にてコンソール入力
+10."git checkout origin/deverop"　コマンドをプロジェクト内部にてコンソール入力

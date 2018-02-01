@@ -1,0 +1,29 @@
+app/Http/Controllers
+　→コントローラー(内部設計)
+
+config
+　→フォーム等での使用データ(全て手入力)
+
+memo
+　→プロジェクトとは直接関係のないファイル
+　　だが、参考にしたURLや素材、環境導入の方法等、必要情報の格納庫
+
+public/mamewaza_weather
+　→ｊQueryの設置場所
+
+public/img
+　→使用画像
+
+public/mamewaza_weather
+　→天気プラグイン
+
+resources/views
+　→画面設計
+
+routes
+　→web.php　にてルーティング制御
+
+直下
+　→.env　にてlaravel基本設定変更済
+　→.README.txt　にてプロジェクト起動方法記述
+　→readme.md　はlaravelの既定

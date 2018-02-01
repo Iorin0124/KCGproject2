@@ -1,0 +1,9 @@
+1.プロジェクトを全て解凍
+2.phpのインストール
+3.phpのPath設定
+4.Composerのインストール
+5.ComposerのPath設定
+6."composer update"　コマンドをプロジェクト内部にてコンソール入力
+7."composer install"　コマンドをプロジェクト内部にてコンソール入力
+8."php -S localhost:8000 -t public"と、入力するとLaravelが8000ポートを使用して動き出す。
+9.『http://localhost:8000/top』に接続して確認
