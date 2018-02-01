@@ -89,7 +89,7 @@
     <option value="2" <?php if(!empty($wShow)&&$wShow==2){print 'selected';}; ?>>到着地</option>
   </select>
 
-  <!--　天気表示　選択地域　-->    <!--変数は後で設定して-->
+  <!--　天気表示　選択地域　-->
   <i class="smallpad"></i>
   <select class="middleFont puldown-1" name="choiceIC" id="choice">
 @if(!empty($wShow))
@@ -139,18 +139,20 @@
 
 <!--　どの都道府県が選択されるかにより選択できるICを変える　-->
 <script type="text/javascript">
+	//出発地が変更された場合
   $("#startPref").change(function(){
     var prefnum = $(this).val();
-    //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
 	$("#inIc").empty();
 	  @foreach(config('ic') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
+				//選択された都道府県と同じ都道府県のIC群か判別
 				if(prefnum==index){
 					$("#inIc").append($("<option>").val("{{$name}}").text("{{$n}}"));
 				}
 			@endforeach
 		@endforeach
+	//出発地の天気をプルダウンメニューに表示する
 	if(($("#show").val())==1){
 		var choice = $("#startPref").val();
 		$("#choice").empty();
@@ -165,9 +167,9 @@
 	}
 
   });
+  //到着地が変更された場合
   $("#goalPref").change(function(){
     var prefnum = $(this).val();
-    //console.log(prefnum);   //どの都道府県が選択されているか番号で取得、確認
   $("#outIc").empty();
     @foreach(config('ic') as $index => $i)
     var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -177,7 +179,7 @@
         }
       @endforeach
     @endforeach
-	
+	//到着地の天気をプルダウンメニューに表示する
 	if(($("#show").val())==2){
 		var choice = $("#goalPref").val();
 		$("#choice").empty();
@@ -194,6 +196,7 @@
 
   });
   
+  //天気の表示の有無が変更された場合
   $("#show").change(function(){
 	var choice = $(this).val();
 	$("#choice").empty();
@@ -202,20 +205,24 @@
 		}else if(choice==2){
 			choice = $("#goalPref").val();
 		}
+
 	if(choice!=0){
 	@foreach(config('weathername') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 		@foreach($i as $name => $n)
+			//天気を表示する場合、出発地か到着地か判別しプルダウンメニューに表示する
 			if(choice==index){
 			  $("#choice").append($("<option>").val("{{$name}}").text("{{$n}}"));
 			}
 		  @endforeach
 		@endforeach
 	}else{
-		$("#choice").append($("<option>").val("0").text("-----"));
+	//天気を表示しない場合
+	$("#choice").append($("<option>").val("0").text("-----"));
 	}
   });
 
+  //到着地と出発地を入れ替える
   $("#change").click(function(){
 	var inPref = $("#startPref").val();
 	var outPref = $("#goalPref").val();
@@ -224,7 +231,8 @@
 
 	$("#inIc").empty();
 	$("#outIc").empty();
-
+	
+	//選択されていた出発地の都道府県を消去し、到着地に入っていた都道府県を選択する
 	$("#startPref").empty();
 	@foreach(config('pref') as $index => $name)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -235,7 +243,7 @@
 
 		}
     @endforeach
-
+	//選択されていた到着地の都道府県を消去し、出発地に入っていた都道府県を選択する
 	$("#goalPref").empty();
 	@foreach(config('pref') as $index => $name)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
@@ -247,8 +255,8 @@
 		}
     @endforeach
 
-
-	  @foreach(config('ic') as $index => $i)
+	//変更された出発地に応じてICのプルダウンメニューを変更する
+	@foreach(config('ic') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
 				if(outPref==index){
@@ -261,6 +269,7 @@
 			@endforeach
 		@endforeach
 
+	//変更された到着地に応じてICのプルダウンメニューを変更する
 	  @foreach(config('ic') as $index => $i)
 		var index = <?php echo json_encode($index, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 			@foreach($i as $name => $n)
@@ -273,7 +282,8 @@
 				}
 			@endforeach
 		@endforeach
-		
+	
+	//天気の表示が選ばれていた場合、再度出発地か到着地か判別し対応したものに中身を変更する
 	if(($("#choice").val())!=0){
 		var choice = $("#show").val();
 		$("#choice").empty();
@@ -311,7 +321,7 @@
 	 </script>
 @endif
 
-<!--　div内に検索した情報を表示する　フェッチに書き換えてくれてok　-->
+<!--　div内に検索した情報を表示する　-->
 @if(!empty($item))
 	<? echo($item); ?>
   <div class="padt-2 padl-2">
