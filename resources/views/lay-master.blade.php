@@ -147,9 +147,6 @@
           margin: 3px;
           content: '\f021';
         }
-
-
-
       </style>
         <!--  ここまでがスタイル調整  -->
     </head>
